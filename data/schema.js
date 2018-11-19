@@ -6,6 +6,8 @@ const typeDefs = `
 type Query {
   author(firstName: String, lastName: String): Author
   allAuthors: [Author]
+  allComments: [Comment]
+  comment(authorId: Int): Comment
   getFortuneCookie: String # we'll use this later
 }
 type Author {
@@ -13,6 +15,7 @@ type Author {
   firstName: String
   lastName: String
   posts: [Post]
+  comments: [Comment]
 }
 type Post {
   id: Int
@@ -20,6 +23,13 @@ type Post {
   text: String
   views: Int
   author: Author
+  comments: [Comment]
+}
+type Comment {
+  id: Int
+  text: String
+  author: Author
+  post: Post
 }
 `;
 
