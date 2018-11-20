@@ -8,7 +8,13 @@ const resolvers = {
     },
     comment(_, args) {
       return Comment.find({ where: args});
-    }
+    },
+    allComments(_, args){
+      return Comment.findAll();
+    }, 
+    allAuthors(_, args){
+      return Author.findAll();
+    }, 
   },
   Author: {
     posts(author) {
@@ -33,7 +39,7 @@ const resolvers = {
     post(comment){
       return comment.getPost();
     }
-  }
+  }, 
 };
 
 export default resolvers;
